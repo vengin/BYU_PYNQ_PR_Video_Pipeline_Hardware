@@ -8,7 +8,7 @@ typedef ap_int<8> pixel_type_s;
 #define LINE_BUFFER_SIZE (MAX_WIDTH)
 #define MAX_WIDTH 1920 //1920
 #define MAX_HEIGHT 1080 //1080
-#define ABSDIFF(x,y)	((x>y)? x - y : y - x)
+#define ABSDIFF(x,y)    ((x>y)? x - y : y - x)
 #define ABS(x)          ((x>0)? x : -x)
 
 struct out_stream {
