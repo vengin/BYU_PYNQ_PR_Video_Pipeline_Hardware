@@ -1,6 +1,6 @@
 # BYU_Pynq_PR_Video_Pipeline_Hardware
 This is repo has scripts to build Vivado _Hardware_ for [BYU Pynq PR Video Pipeline](https://github.com/byuccl/BYU_PYNQ_PR_Video_Pipeline) _Software_ repo. Note, that build process is time-consuming and takes many hours. Prebuilt `*.bit` files are already included in _Software_ repo.
-The original design was build for Pynq-z1, but it was also verified ofr Pynz-z2.
+The original design was built for Pynq-z1, but it was also verified for Pynq-z2.
 
 
 ## Setup and Build Instructions
@@ -45,9 +45,9 @@ Navigate to `/drp` directory and build a static design running `source build_sta
 
     5. **Defines Pblocks (Physical Partitions) for Reconfigurable Modules**. Define regions on the FPGA fabric where reconfigurable modules can be placed with `create_pblock <name>`. Set specific SLICE XY coordinates to place each PBlock.
 
-    6. Reads constraints  (`Const/top.xdc` and `Const/1080p.xdc`).
+6. Reads constraints (`Const/top.xdc` and `Const/1080p.xdc`).
 
-    <a id="Step3.7"></a>
+<a id="Step3.7"></a>
 
     7. Performs Vivado Design Implementation (Place&Route), storing implementation checkpoint  (`write_checkpoint -force Implement/pass_route_design.dcp`). Generates output bitstream file (`write_bitstream -file Bitstreams/video.bit -force`) and stores the overall static design checkpoint (`write_checkpoint -force Checkpoint/static_route_design.dcp`)
 
@@ -71,5 +71,3 @@ Navigate to `/drp` directory and build PR modules running `source build_prs.tcl`
 - RGB filter
 - Sobel
 - Threshold
-
-Depending on the module size (small\mid\large) a corresponding TCL script is used to build one of the filters: `part_gen_small`, `part_gen_mid`, `part_gen_large`. Each of these scripts builds a corresponding HLS module. It updates a base `static_route_design.dcp`, storing updated design checkpoints (`/drp/Synth` for Synthesis, `/drp/Implement` for Implementation) and writes bitstream files, which are moved to `/drp/Bitstreams`.
